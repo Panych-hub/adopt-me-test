@@ -19,33 +19,33 @@ onMounted(async () => {
     <TransitionGroup name="card-fade" tag="div" class="home-view__cards">
       <template v-for="currency of currencyStore.baseCurrencies" :key="`base-${currency}`">
         <TheCard v-if="currency !== currencyStore.currentCurrency">
-          1 {{ currencyStore.currentCurrency }} =
-          {{ currencyStore.getConvertingValue(currencyStore.currentCurrency, currency) }}
-          {{ currency }}
+          1 {{ currency }} =
+          {{ currencyStore.getConvertingValue(currency, currencyStore.currentCurrency) }}
+          {{ currencyStore.currentCurrency }}
         </TheCard>
       </template>
 
       <template v-for="(currency, key) of currencyStore.addedCurrencies" :key="`added-${currency}`">
-        <TheCard
-          v-if="currency !== currencyStore.currentCurrency"
-          class="home-view__the-card"
-        >
-          1 {{ currencyStore.currentCurrency }} =
-          {{ currencyStore.getConvertingValue(currencyStore.currentCurrency, currency) }}
+        <TheCard v-if="currency !== currencyStore.currentCurrency" class="home-view__the-card">
+          1
           <TheSelect
             v-if="[...currencyStore.notSelectedCurrencies, currency].length > 1"
             :options-list="[...currencyStore.notSelectedCurrencies, currency]"
             v-model="currencyStore.addedCurrencies[key]"
           />
-          <template v-else>{{currency}}</template>
-          <DeleteButton class="home-view__delete-button" @delete="currencyStore.removeCurrency(currency)" />
+          <template v-else>{{ currency }}</template>
+          =
+          {{ currencyStore.getConvertingValue(currency, currencyStore.currentCurrency) }}
+          {{ currencyStore.currentCurrency }}
+
+          <DeleteButton
+            class="home-view__delete-button"
+            @delete="currencyStore.removeCurrency(currency)"
+          />
         </TheCard>
       </template>
     </TransitionGroup>
-    <AddButton
-      @add="currencyStore.addCurrency"
-      v-if="currencyStore.notSelectedCurrencies.length"
-    />
+    <AddButton @add="currencyStore.addCurrency" v-if="currencyStore.notSelectedCurrencies.length" />
   </div>
 </template>
 

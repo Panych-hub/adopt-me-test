@@ -15,7 +15,7 @@ const secondCurrencyType = ref(
 
 const rawFirstValue = ref(1)
 const rawSecondValue = ref(
-  currencyStore.getConvertingValue(firstCurrencyType.value, secondCurrencyType.value) * rawFirstValue.value
+  convert(rawFirstValue.value, firstCurrencyType.value, secondCurrencyType.value)
 )
 
 const firstCurrencyValue = computed({
@@ -43,7 +43,7 @@ watch([firstCurrencyType, secondCurrencyType], () => {
 })
 
 function convert(amount: number, from: string, to: string): number {
-  return currencyStore.getConvertingValue(from, to) * amount
+  return Number(Number(currencyStore.getConvertingValue(from, to) * amount).toFixed(2))
 }
 </script>
 <template>
