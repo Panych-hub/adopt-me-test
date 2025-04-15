@@ -56,7 +56,6 @@ nav :deep(a:first-of-type) {
 
   nav {
     text-align: left;
-    margin-left: -1rem;
     font-size: 1rem;
 
     padding: 1rem 0;

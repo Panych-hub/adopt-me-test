@@ -26,6 +26,9 @@ export const useCurrencyStore = defineStore('currency', () => {
     parseCurrencies(currencyObject)
   }
 
+  function getConvertingValue(current: string, converting: string) {
+    return currenciesList.value[current][converting]
+  }
   function selectCurrency(currency: string) {
     currentCurrency.value = currency
   }
@@ -46,6 +49,7 @@ export const useCurrencyStore = defineStore('currency', () => {
     getCurrencies,
     addCurrency,
     removeCurrency,
-    selectCurrency
+    selectCurrency,
+    getConvertingValue
   }
 })
