@@ -42,7 +42,8 @@ watch([firstCurrencyType, secondCurrencyType], () => {
   rawSecondValue.value = convert(rawFirstValue.value, firstCurrencyType.value, secondCurrencyType.value)
 })
 
-function convert(amount: number, from: string, to: string): number {
+function convert(amount: number, from?: string, to?: string): number {
+  if (!from || !to) return 0
   return Number(Number(currencyStore.getConvertingValue(from, to) * amount).toFixed(2))
 }
 </script>
