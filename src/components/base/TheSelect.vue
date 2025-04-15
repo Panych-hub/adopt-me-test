@@ -6,9 +6,9 @@ const modelValue = defineModel<T>({ required: true })
 </script>
 
 <template>
-  <div class="currency-options">
+  <div class="the-select">
     <select v-model="modelValue">
-      <option v-for="key in optionsList" :key="key" :value="key">
+      <option v-for="key in optionsList" :key="key" :value="key"  class="the-select__option">
         {{ key }}
       </option>
     </select>
@@ -16,8 +16,11 @@ const modelValue = defineModel<T>({ required: true })
 </template>
 
 <style scoped>
-.currency-options {
+.the-select {
   display: inline-block;
+}
+select {
+  text-transform: uppercase;
 }
 select {
   background-color: var(--color-background-soft);

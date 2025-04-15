@@ -10,7 +10,7 @@ export const useCurrencyStore = defineStore('currency', () => {
   const addedCurrencies = ref<string[]>([])
   const currencyNames = computed(() => Object.keys(currenciesList.value))
   const notSelectedCurrencies = computed(() => {
-    const selected = new Set([...baseCurrencies, ...addedCurrencies.value])
+    const selected = new Set([...baseCurrencies, ...addedCurrencies.value, currentCurrency.value])
     return currencyNames.value.filter(name => !selected.has(name))
   })
 
