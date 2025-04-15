@@ -8,11 +8,13 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-    },
-    {
-      path: '/convert',
-      name: 'convert',
-      component: ConvertView,
+      children: [
+        {
+          path: '/convert',
+          name: 'convert',
+          component: ConvertView,
+        },
+      ],
     },
   ],
 })
