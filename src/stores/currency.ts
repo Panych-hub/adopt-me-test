@@ -58,4 +58,8 @@ export const useCurrencyStore = defineStore('currency', () => {
     getConvertingValue,
     notSelectedCurrencies
   }
-})
+},
+  {
+    persist: true
+  }
+)
