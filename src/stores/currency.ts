@@ -7,8 +7,12 @@ export const useCurrencyStore = defineStore('currency', () => {
   const currentCurrency = ref<string>()
   const currenciesList = ref<CurrencyList>({})
   const baseCurrencies: string[] = ['rub', 'usd', 'eur']
-  const addedCurrencies: string[] = []
+  const addedCurrencies = ref<string[]>([])
   const currencyNames = computed(() => Object.keys(currenciesList.value))
+  const notSelectedCurrencies = computed(() => {
+    const selected = new Set([...baseCurrencies, ...addedCurrencies.value])
+    return currencyNames.value.filter(name => !selected.has(name))
+  })
 
   function parseCurrencies(currencyObject: CurrencyObject) {
     Object.entries(currencyObject).forEach(([key, value]) => {
@@ -32,13 +36,14 @@ export const useCurrencyStore = defineStore('currency', () => {
   function selectCurrency(currency: string) {
     currentCurrency.value = currency
   }
-  function addCurrency(currency: string) {
-    addedCurrencies.push(currency)
+  function addCurrency() {
+    console.log('push')
+    addedCurrencies.value.push(notSelectedCurrencies.value[0])
   }
 
   function removeCurrency(currency: string) {
-    const index = addedCurrencies.findIndex((value) => value === currency)
-    addedCurrencies.splice(index, 1)
+    const index = addedCurrencies.value.findIndex((value) => value === currency)
+    addedCurrencies.value.splice(index, 1)
   }
   return {
     currentCurrency,
@@ -50,6 +55,7 @@ export const useCurrencyStore = defineStore('currency', () => {
     addCurrency,
     removeCurrency,
     selectCurrency,
-    getConvertingValue
+    getConvertingValue,
+    notSelectedCurrencies
   }
 })
