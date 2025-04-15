@@ -8,7 +8,7 @@ export const useCurrencyStore = defineStore('currency', () => {
   const currenciesList = ref<CurrencyList>({})
   const baseCurrencies: string[] = ['rub', 'usd', 'eur']
   const addedCurrencies: string[] = []
-  const currencyNames = computed(() => Object.keys(currenciesList))
+  const currencyNames = computed(() => Object.keys(currenciesList.value))
 
   function parseCurrencies(currencyObject: CurrencyObject) {
     Object.entries(currencyObject).forEach(([key, value]) => {
@@ -26,6 +26,9 @@ export const useCurrencyStore = defineStore('currency', () => {
     parseCurrencies(currencyObject)
   }
 
+  function selectCurrency(currency: string) {
+    currentCurrency.value = currency
+  }
   function addCurrency(currency: string) {
     addedCurrencies.push(currency)
   }
@@ -43,5 +46,6 @@ export const useCurrencyStore = defineStore('currency', () => {
     getCurrencies,
     addCurrency,
     removeCurrency,
+    selectCurrency
   }
 })
