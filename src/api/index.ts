@@ -1,5 +1,5 @@
-import { Currency } from '@/api/currency.ts'
+import { CurrencyEndpoint } from '@/api/currency.ts'
 
 export default {
-  currency: new Currency()
+  currency: new CurrencyEndpoint(),
 }

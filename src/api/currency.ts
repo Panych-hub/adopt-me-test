@@ -1,9 +1,9 @@
 import Axios from 'axios'
+import type { CurrencyObject } from '@/types'
 
-export class Currency {
-  /** Get modeling result from the specified project snapshot */
-  async getCurrency() {
-    const res = await Axios.get(`https://status.neuralgeneration.com/api/currency`)
+export class CurrencyEndpoint {
+  async getCurrency(): Promise<CurrencyObject> {
+    const res = await Axios.get<CurrencyObject>(`https://status.neuralgeneration.com/api/currency`)
     return res.data
   }
 }

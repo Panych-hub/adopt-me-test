@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import Api from '@/api'
+import { useCurrencyStore } from '@/stores/currency.ts'
+
+const currencyStore = useCurrencyStore()
 
 onMounted(async () => {
-  await Api.currency.getCurrency()
+  await currencyStore.getCurrencies()
 })
 </script>
 
 <template>
+  <div>
+
+  </div>
 </template>
