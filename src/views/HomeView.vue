@@ -51,6 +51,7 @@ onMounted(async () => {
 
 <style scoped>
 .home-view {
+  margin-top: 30px;
   text-transform: uppercase;
   width: 100%;
   display: flex;
@@ -99,5 +100,4 @@ onMounted(async () => {
 .card-fade-leave-from {
   max-height: 200px;
 }
-
 </style>

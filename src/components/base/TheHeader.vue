@@ -18,11 +18,11 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 1rem;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0.3rem;
+  padding: 1rem 0;
 }
-
 nav :deep(a.router-link-exact-active) {
   color: var(--color-text);
 }
