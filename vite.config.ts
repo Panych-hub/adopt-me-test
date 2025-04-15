@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  base: '/adopt-me-test',
+  base: '/adopt-me-test/',
   plugins: [vue()],
   resolve: {
     alias: {
