@@ -17,11 +17,15 @@ header {
 }
 
 nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   width: 100%;
   font-size: 1rem;
-  text-align: center;
-  margin-top: 0.3rem;
   padding: 1rem 0;
+  margin-top: 0.3rem;
 }
 nav :deep(a.router-link-exact-active) {
   color: var(--color-text);
@@ -32,13 +36,19 @@ nav :deep(a.router-link-exact-active:hover) {
 }
 
 nav :deep(*) {
+  position: relative;
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
-nav :deep(a:first-of-type) {
-  border: 0;
+nav :deep(*:not(:first-child)::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 1px;
+  background-color: var(--color-border);
 }
 
 @media (min-width: 1024px) {

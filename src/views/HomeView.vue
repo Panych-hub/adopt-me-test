@@ -51,7 +51,6 @@ onMounted(async () => {
 
 <style scoped>
 .home-view {
-  margin-top: 30px;
   text-transform: uppercase;
   width: 100%;
   display: flex;
@@ -63,6 +62,7 @@ onMounted(async () => {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }

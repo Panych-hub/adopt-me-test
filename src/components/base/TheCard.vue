@@ -10,6 +10,7 @@
 <style scoped>
 .currency-card__card {
   width: 100%;
+  max-width: 500px;
   height: 70px;
   display: flex;
   justify-content: center;

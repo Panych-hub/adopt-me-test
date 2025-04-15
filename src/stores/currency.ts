@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import Api from '@/api'
 import type { CurrencyList, CurrencyObject } from '@/types'
+import { listWithoutValue } from '@/services/listWithoutValue.ts'
 
 export const useCurrencyStore = defineStore('currency', () => {
   const currentCurrency = ref<string>()
@@ -37,13 +38,11 @@ export const useCurrencyStore = defineStore('currency', () => {
     currentCurrency.value = currency
   }
   function addCurrency() {
-    console.log('push')
     addedCurrencies.value.push(notSelectedCurrencies.value[0])
   }
 
   function removeCurrency(currency: string) {
-    const index = addedCurrencies.value.findIndex((value) => value === currency)
-    addedCurrencies.value.splice(index, 1)
+    addedCurrencies.value = listWithoutValue(addedCurrencies.value, currency)
   }
   return {
     currentCurrency,
